@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.root {
+  width: 300px;
+  height: 100vh;
+  background-color: $grayDark;
+  padding: 5px 7px;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.7;
+    padding: 7px 15px;
+    font-size: 18px;
+
+    > h3 {
+      letter-spacing: 1px;
+    }
+    .logout {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        &::before {
+          content: "logout";
+          background-color: $gray;
+          position: absolute;
+          z-index: 10;
+          padding: 1px 10px;
+          top: 35px;
+          height: 30px;
+          color: $grayLight;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $gray;
+      opacity: 1;
+    }
+  }
+}
