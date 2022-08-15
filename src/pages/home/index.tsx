@@ -3,9 +3,6 @@ import s from "./Home.module.scss"
 
 const Home = () => {
 
-    const createBoard = () => {
-        
-    }
     return (
         <section className={s.root}>
             <div className={s.titleBox}>

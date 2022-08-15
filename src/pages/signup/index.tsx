@@ -3,7 +3,6 @@ import s from "./Signup.module.scss";
 import clsx from "clsx";
 import {useNavigate} from "react-router-dom";
 import authApi from "../../api/apiAuth";
-import axios from "axios";
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -27,8 +26,9 @@ const Signup = () => {
         if (Object.values(user).includes('')) {
             Object.entries(user).map((el, index) => {
                 if (el[1].trim() === "") {
-                        setUserErrorText("please fill empty value")
+                   return  setUserErrorText("please fill empty value")
                 }
+                return el
             })
             return
         }
