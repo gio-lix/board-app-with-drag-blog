@@ -107,7 +107,7 @@ const SideBar = () => {
                     onDragEnd={handleSort}
                     onDragOver={(e) => e.preventDefault()}
                 >
-                    <p> {item.title} {item.icon}</p>
+                    <p>{item.icon} {item.title}</p>
                 </NavLink>
             ))}
         </aside>

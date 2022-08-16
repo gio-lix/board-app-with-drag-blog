@@ -13,6 +13,12 @@
     opacity: 0.7;
     padding: 7px 15px;
     font-size: 18px;
+    overflow-wrap: break-word;
+
+    > p {
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
 
 
     > h3 {
