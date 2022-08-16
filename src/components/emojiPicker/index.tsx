@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import s from "./EmojiPicjer.module.scss"
-// @ts-ignore
-import Picker from '@emoji-mart/react'
+
 import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 interface Props {
     icon: string
