@@ -1,0 +1,13 @@
+.root {
+  position: relative;
+  cursor: pointer;
+  .icon {
+    font-size: 30px;
+  }
+
+  .active {
+    position: absolute;
+    z-index: 20;
+    top: 42px;
+  }
+}

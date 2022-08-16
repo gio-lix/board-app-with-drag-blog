@@ -14,6 +14,7 @@
     padding: 7px 15px;
     font-size: 18px;
 
+
     > h3 {
       letter-spacing: 1px;
     }
@@ -28,6 +29,7 @@
           z-index: 10;
           padding: 1px 10px;
           top: 35px;
+          left: 20px;
           height: 30px;
           color: $grayLight;
         }
@@ -38,5 +40,30 @@
       background-color: $gray;
       opacity: 1;
     }
+
+    .add {
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        &::after {
+          content: "add";
+          background-color: $gray;
+          position: absolute;
+          z-index: 10;
+          padding: 1px 10px;
+          top: 35px;
+          height: 30px;
+          color: $grayLight;
+        }
+      }
+    }
   }
+}
+
+.link {
+  width: 200px;
+  height: 50px;
+  background-color: green;
+  margin-bottom: 10px;
 }
