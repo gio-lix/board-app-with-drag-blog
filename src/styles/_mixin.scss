@@ -1,0 +1,19 @@
+@import "src/styles/variables";
+
+@mixin hoverText ($text, $top: 0, $left: 0, $right: 0) {
+  &::before {
+    content: $text;
+    background-color: $gray;
+    position: absolute;
+    z-index: 10;
+    padding: 7px 10px;
+    line-height: 100%;
+    font-size: 16px!important;
+    top: $top;
+    right: $right;
+    left: $left;
+    cursor: auto;
+    color: $grayLight;
+
+  }
+}

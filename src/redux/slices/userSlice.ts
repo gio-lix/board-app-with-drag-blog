@@ -6,12 +6,14 @@ type User = {
 }
 
 const initialState = {
+    status: "loading",
     value: {
         id: "",
         email: ""
     }
 }
 type State = typeof initialState
+
 
 
 const userSlice = createSlice({
@@ -21,7 +23,9 @@ const userSlice = createSlice({
         setUser: (state: State, action:PayloadAction<User>) => {
             state.value = action.payload
         }
-    }
+    },
+
+
 })
 
 

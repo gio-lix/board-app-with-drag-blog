@@ -1,94 +1,149 @@
-import React, {lazy, Suspense, useEffect, useRef, useState} from 'react';
-import {useParams} from "react-router-dom";
+import React, {lazy, Suspense,  useEffect, useState} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
 import boardApi from "../../api/boardApi";
 import {BoardState} from "../../typeing";
 import s from "./Board.module.scss"
 import {RootState, useAppDispatch, useAppSelector} from "../../redux/store";
 import {setBoards} from "../../redux/slices/boardSlice";
-import {AiFillStar, AiOutlineStar} from "react-icons/ai"
+import {AiFillStar, AiOutlineStar, AiFillDelete} from "react-icons/ai"
+import {setFavoritesLists} from "../../redux/slices/favoriteSlice";
 const EmojiPicker = lazy(() => import("../emojiPicker"))
-
 
 
 const Board = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const {value} = useAppSelector((state: RootState) => state.board)
+    const {value: favorites} = useAppSelector((state: RootState) => state.favorites)
     const [board, setBoard] = useState<BoardState>()
     const [icon, setIcon] = useState<string>("")
-    const [title, setTitle] = useState<string>("")
     const {boardId} = useParams()
 
 
     useEffect(() => {
-        let mounted = true
-        const getBoard = async () => {
+        let mounted = true;
+        (async function getBoard() {
             try {
-                const {data} = await boardApi.getOne(boardId)
-                if (mounted)  {
-                    setBoard(data)
-                    setIcon(data?.icon)
-                    setTitle(data.title)
+                if (boardId) {
+                    const {data} = await boardApi.getOne(boardId)
+                    if (mounted) {
+                        setBoard(data)
+                        setIcon(data?.icon)
+                    }
                 }
             } catch (err) {
                 console.log(err)
             }
-        }
-        getBoard()
+        })();
         return () => {mounted = false}
-    },[boardId])
+    }, [boardId])
 
-
-    const onChangeIcon = async (item: string) => {
+    const onUpdateChangeIcon = async (item: string) => {
         const _temp: BoardState[] = [...value]
-        const index = _temp.findIndex((e:BoardState) => e.id === boardId)
-        _temp[index] = {..._temp[index], icon: item }
+        const index = _temp.findIndex((e: BoardState) => e.id === boardId)
+        _temp[index] = {..._temp[index], icon: item}
         dispatch(setBoards(_temp))
         setIcon(item)
 
+        if (favorites) {
+            const _tempFavorites: BoardState[] = [...favorites]
+            const favoritesIndex = _tempFavorites.findIndex((e: BoardState) => e.id === boardId)
+            _tempFavorites[favoritesIndex] = {..._tempFavorites[favoritesIndex], icon: item}
+            dispatch(setFavoritesLists(_tempFavorites))
+        }
+
         try {
-            await boardApi.updatePosition(boardId, {icon: item})
+           await boardApi.updatePosition(boardId, {icon: item})
         } catch (err) {
             console.log(err)
         }
     }
 
-    const updateTitle = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onUpdateTitle = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTitle = e.target.value
-        setBoard({...board, title:newTitle } as any)
-
+        setBoard({...board, title: newTitle} as any)
 
         const _temp: BoardState[] = [...value]
-        const index = _temp.findIndex((e:BoardState) => e.id === boardId)
-        _temp[index] = {..._temp[index], title: newTitle }
+        const index = _temp.findIndex((e: BoardState) => e.id === boardId)
+        _temp[index] = {..._temp[index], title: newTitle}
         dispatch(setBoards(_temp))
 
+        if (favorites) {
+            const _tempFavorites: BoardState[] = [...favorites]
+            const favoritesIndex = _tempFavorites.findIndex((e: BoardState) => e.id === boardId)
+            _tempFavorites[favoritesIndex] = {..._tempFavorites[favoritesIndex], title: newTitle}
+            dispatch(setFavoritesLists(_tempFavorites))
+        }
+
         try {
-            await boardApi.updatePosition(boardId, {title: newTitle })
+            await boardApi.updatePosition(boardId, {title: newTitle})
         } catch (err) {
             console.log(err)
         }
     }
 
-    const updateDescription = async (e: any) => {
+    const onUpdateDescription = async (e: any) => {
         const newDesc = e.target.value
-        setBoard({...board, description:newDesc } as any)
+        setBoard({...board, description: newDesc} as any)
 
         const _temp: BoardState[] = [...value]
-        const index = _temp.findIndex((e:BoardState) => e.id === boardId)
-        _temp[index] = {..._temp[index], description: newDesc }
+        const index = _temp.findIndex((e: BoardState) => e.id === boardId)
+        _temp[index] = {..._temp[index], description: newDesc}
         dispatch(setBoards(_temp))
 
+        if (favorites) {
+            const _tempFavorites: BoardState[] = [...favorites]
+            const favoritesIndex = _tempFavorites.findIndex((e: BoardState) => e.id === boardId)
+            _tempFavorites[favoritesIndex] = {..._tempFavorites[favoritesIndex], description: newDesc}
+            dispatch(setFavoritesLists(_tempFavorites))
+        }
+
         try {
-            await boardApi.updatePosition(boardId, {description: newDesc })
+            await boardApi.updatePosition(boardId, {description: newDesc})
         } catch (err) {
             console.log(err)
         }
     }
 
-    const onUpdateFavorite = async () => {
+
+
+    const onAddFavorite =  async () => {
         try {
-            await boardApi.updatePosition(boardId, {favorite: !board?.favorite })
-            setBoard({...board, favorite: !board?.favorite} as any)
+            const {data} = await boardApi.updatePosition(boardId, {favorite: !board?.favorite})
+            let _newFavorites: any = [...favorites]
+            if (favorites) {
+                if (!data.favorite) {
+                    _newFavorites.push(data)
+                } else {
+                    _newFavorites = _newFavorites.filter((e: any) => e.id !== boardId)
+                }
+            } else {
+                _newFavorites.unshift(data)
+            }
+            console.log("_newFavorites - - > ",_newFavorites)
+            dispatch(setFavoritesLists(_newFavorites))
+             setBoard({...board, favorite: !board?.favorite} as any)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    const onDeleteBoard = async () => {
+        try {
+            await boardApi.deleteBoard(boardId)
+            if (favorites) {
+                const newFavoriteList = favorites.filter((e: BoardState) => e.id !== boardId)
+                dispatch(setFavoritesLists(newFavoriteList))
+            }
+
+            const newList = value.filter((e: BoardState) => e.id !== boardId)
+            if (newList.length === 0) {
+                navigate("/")
+            } else {
+                navigate(`/boards/${(newList[0] as BoardState).id}`)
+            }
+            dispatch(setBoards(newList))
         } catch (err) {
             console.log(err)
         }
@@ -97,30 +152,31 @@ const Board = () => {
 
     return (
         <section className={s.root}>
-            <span className={s.star} onClick={onUpdateFavorite}>
-                {board?.favorite ? <AiFillStar fill="yellow" /> : <AiOutlineStar />}
+            <span className={s.star} onClick={onAddFavorite}>
+                {board?.favorite ? <AiFillStar fill="yellow"/> : <AiOutlineStar/>}
             </span>
-
+            <span onClick={onDeleteBoard} className={s.del}>
+                <AiFillDelete />
+            </span>
             <div className={s.box}>
                 <div className={s.emojiPicker}>
-                    <Suspense  fallback={`<p>...</p>`}>
+                    <Suspense fallback={`...`}>
                         <EmojiPicker
                             icon={icon && icon}
-                            onChangeIcon={onChangeIcon}
+                            onChangeIcon={onUpdateChangeIcon}
                         />
                     </Suspense>
                 </div>
                 <input
                     type="text"
                     value={board?.title || ""}
-                    onChange={updateTitle}
+                    onChange={onUpdateTitle}
                     className={s.title}
-
                 />
                 <textarea
                     className={s.desc}
                     value={board?.description || ""}
-                    onChange={updateDescription}
+                    onChange={onUpdateDescription}
                 />
             </div>
             <div>
@@ -132,7 +188,7 @@ const Board = () => {
                     Section
                 </p>
             </div>
-            <hr />
+            <hr/>
         </section>
     );
 };

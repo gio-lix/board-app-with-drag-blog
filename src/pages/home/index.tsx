@@ -2,11 +2,9 @@ import React from 'react';
 import s from "./Home.module.scss"
 import boardApi from "../../api/boardApi";
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch} from "../../redux/store";
 
 const Home = () => {
     const navigate = useNavigate()
-    const dispatch = useAppDispatch()
 
     const createBoard = async () => {
         try {

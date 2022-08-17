@@ -1,33 +1,36 @@
 @import "src/styles/variables";
+@import "src/styles/mixin";
 
 .root {
   padding: 10px 20px;
   width: 100%;
+  position: relative;
+
+  .del {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 16px;
+    color: #e01a65;
+    cursor: pointer;
+
+    &:hover {
+      @include hoverText("delete", 25px, _, 10px);
+    }
+
+  }
   .box {
     margin-top: 20px;
     padding: 0 20px;
-
 
     .emojiPicker {
       display: inline-block;
       position: relative;
 
       &:hover {
-        &::after {
-          content: "emoji";
-          background-color: $gray;
-          position: absolute;
-          z-index: 10;
-          padding: 1px 10px;
-          top: 40px;
-          left: 23px;
-          height: 30px;
-          color: $grayLight;
-          font-size: 18px;
-        }
+        @include hoverText("emoji", 36px, 30px, _);
       }
     }
-
     > h4 {
       font-size: 20px;
       margin-bottom: 30px;
@@ -50,18 +53,7 @@
     position: relative;
 
     &:hover {
-      &::after {
-        content: "favorite";
-        background-color: $gray;
-        position: absolute;
-        z-index: 10;
-        padding: 1px 10px;
-        top: 36px;
-        left: 20px;
-        height: 30px;
-        color: $grayLight;
-        font-size: 18px;
-      }
+      @include hoverText("favorite", 36px, 20px, _);
     }
   }
 
@@ -80,7 +72,7 @@
     resize: none;
   }
 
-  > div:nth-child(3) {
+  > div:nth-child(4) {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

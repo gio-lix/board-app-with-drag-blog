@@ -24,7 +24,7 @@ const Signup = () => {
     const onHandleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault()
         if (Object.values(user).includes('')) {
-            Object.entries(user).map((el, index) => {
+            Object.entries(user).map((el) => {
                 if (el[1].trim() === "") {
                    return  setUserErrorText("please fill empty value")
                 }

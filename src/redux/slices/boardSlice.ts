@@ -1,9 +1,12 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
+
 
 const initialState = {
     value: []
 }
+
 type State = typeof initialState
+
 export const boardSlice = createSlice({
     name: "board",
     initialState,
@@ -11,7 +14,8 @@ export const boardSlice = createSlice({
         setBoards:(state: State, action) => {
             state.value = action.payload
         }
-    }
+    },
+
 })
 
 

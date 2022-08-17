@@ -31,11 +31,10 @@ const EmojiPicker:FC<Props> = ({icon,onChangeIcon}) => {
     const selectEmoji = (e: { unified: string }) => {
         const sym = e.unified.split("-")
         let _codeArray: string[] = []
-        sym.forEach((el: string) => _codeArray.push(`${'0x'}${el}`))
+        sym.forEach((el: string) => _codeArray.push(`0x${el}`))
         const emoji = (String.fromCodePoint as any)(..._codeArray)
         setIsShowPicker(false)
         onChangeIcon(emoji)
-        // setSelectedEmoji(emoji)
 
     }
     const showPicker = () => setIsShowPicker(!isShowPicker)

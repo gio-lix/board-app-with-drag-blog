@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "src/styles/mixin";
 
 .root {
   width: 300px;
@@ -14,7 +15,16 @@
     padding: 7px 15px;
     font-size: 18px;
     overflow-wrap: break-word;
+    margin: 1px 0;
 
+    &:hover * {
+      color: $grayLight-200;
+    }
+    > span {
+      color: gray;
+      display: flex;
+      align-items: center;
+    }
     > p {
       overflow-wrap: break-word;
       word-break: break-all;
@@ -23,22 +33,14 @@
 
     > h3 {
       letter-spacing: 1px;
+      line-height: 100%;
+
     }
     .logout {
       position: relative;
       cursor: pointer;
       &:hover {
-        &::before {
-          content: "logout";
-          background-color: $gray;
-          position: absolute;
-          z-index: 10;
-          padding: 1px 10px;
-          top: 35px;
-          left: 20px;
-          height: 30px;
-          color: $grayLight;
-        }
+        @include hoverText("logout", 27px, 15px, _);
       }
     }
 
@@ -52,16 +54,7 @@
       position: relative;
 
       &:hover {
-        &::after {
-          content: "add";
-          background-color: $gray;
-          position: absolute;
-          z-index: 10;
-          padding: 1px 10px;
-          top: 35px;
-          height: 30px;
-          color: $grayLight;
-        }
+        @include hoverText("add", 27px, 13px, _);
       }
     }
   }

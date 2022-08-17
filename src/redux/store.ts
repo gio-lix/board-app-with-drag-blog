@@ -1,11 +1,13 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import userReducer from "./slices/userSlice"
 import boardReducer from "./slices/boardSlice"
+import favoritesReducer from "./slices/favoriteSlice"
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 
 const rootReducer = combineReducers({
     user: userReducer,
-    board: boardReducer
+    board: boardReducer,
+    favorites: favoritesReducer
 })
 
 const store = configureStore({
