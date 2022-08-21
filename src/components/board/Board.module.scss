@@ -14,10 +14,6 @@
     color: #e01a65;
     cursor: pointer;
 
-    &:hover {
-      @include hoverText("delete", 25px, _, 10px);
-    }
-
   }
   .box {
     margin-top: 20px;
@@ -28,7 +24,7 @@
       position: relative;
 
       &:hover {
-        @include hoverText("emoji", 36px, 30px, _);
+        @include hoverText("emoji", 40px, 30px, _);
       }
     }
     > h4 {
@@ -105,3 +101,4 @@
     opacity: 0.3;
   }
 }
+

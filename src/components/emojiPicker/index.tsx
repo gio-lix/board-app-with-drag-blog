@@ -10,8 +10,8 @@ interface Props {
 }
 
 const EmojiPicker:FC<Props> = ({icon,onChangeIcon}) => {
-    const [selectedEmoji, setSelectedEmoji] = useState<any>()
-    const [isShowPicker, setIsShowPicker] = useState(false)
+    const [selectedEmoji, setSelectedEmoji] = useState<string>()
+    const [isShowPicker, setIsShowPicker] = useState<boolean>(false)
     const emojiRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {

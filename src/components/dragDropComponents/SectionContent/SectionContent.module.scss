@@ -1,0 +1,54 @@
+.root {
+  margin: 0 5px;
+  .mainBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //width: 100%;
+    width: 250px;
+    color: white;
+    margin: 1px 0;
+    padding: 4px 3px;
+
+
+
+    > input {
+      background: none;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 16px;
+    }
+
+    div {
+      display: flex;
+
+      > span:nth-child(1) {
+        margin-right: 10px;
+        cursor: pointer;
+
+        &:hover {
+          color: #6666e3;
+        }
+      }
+
+      > span:nth-child(2) {
+        cursor: pointer;
+
+        &:hover {
+          color: #ff6200;
+        }
+      }
+    }
+  }
+}
+
+.draggable {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: #888f3a;
+
+}
+
+

@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import "../../../styles/variables";
 
 .root {
   width: 90%;
@@ -10,6 +10,7 @@
   padding: 7px 15px;
   font-size: 18px;
   overflow-wrap: break-word;
+
 
   &:hover {
     background-color: $gray;

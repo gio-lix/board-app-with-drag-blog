@@ -1,17 +1,20 @@
 import React, {useRef} from 'react';
-import {NavLink} from "react-router-dom";
-import s from "./Drop.module.scss";
+import clsx from "clsx";
+import {BoardState} from "../../../typeing";
 
 
 interface Props {
-    data: any
-    activeIndex: any
-    setActiveIndex: any
+    activeIndex: BoardState[]
+    setActiveIndex: Function
+    className?: string
+    Component?: any
+    onNavigate?: Function
 }
 
-const DragDrop = ({data, setActiveIndex, activeIndex}: Props) => {
+const DragDrop = ({ setActiveIndex, activeIndex, onNavigate,className, Component}: Props) => {
     let dragItemRef = useRef<any>(null)
     let dragOverItemRef = useRef<any>(null)
+
 
 
     const handleSort = () => {
@@ -24,22 +27,27 @@ const DragDrop = ({data, setActiveIndex, activeIndex}: Props) => {
         setActiveIndex(_items)
     }
 
+    const onHandleClick = (id: string) => {
+        if (onNavigate) {
+            onNavigate(id)
+        }
+    }
 
     return (
         <>
-            {data?.map((item: any, index: number) => (
-                <NavLink
-                    className={s.root}
-                    to={`/boards/${item.id}`}
+            {activeIndex?.map((item: BoardState, index: number) => (
+                <div
+                    className={clsx(className ? className : "")}
+                    onClick={() => onHandleClick(item.id)}
                     key={`${item._id}-${index}`}
                     draggable
                     onDragStart={() => dragItemRef.current = index}
                     onDragEnter={() => dragOverItemRef.current = index}
                     onDragEnd={handleSort}
-                    onDragOver={(e) => e.preventDefault()}
+                    onDragOver={(e:  React.DragEvent<HTMLDivElement>) => e.preventDefault()}
                 >
-                    <p>{item.icon} {item.title}</p>
-                </NavLink>
+                    {Component ? <Component items={item}/> : "null"}
+                </div>
             ))}
         </>
     )

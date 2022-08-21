@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {setFavoritesLists} from "../../redux/slices/favoriteSlice";
 import {RootState, useAppDispatch, useAppSelector} from "../../redux/store";
 import boardApi from "../../api/boardApi";
-import DragDrop from "../drop";
+import DragDrop from "../drop/DragDrop";
+import SidebarContent from "../dragDropComponents/sidebarContent";
 
 const Favorites = () => {
     const dispatch = useAppDispatch()
@@ -53,9 +54,9 @@ const Favorites = () => {
 
     return (
         <DragDrop
-            data={activeIndex}
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            Component={(item: any) => <SidebarContent items={item} />}
         />
     );
 };

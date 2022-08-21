@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+
+  .dropTitleBox{
+    display: flex;
+  }
+
+
+  .box {
+    display: flex;
+    width: 100%;
+
+    .contentBox {
+      width: 250px!important;
+      margin: 10px 5px;
+      height: auto;
+      border: 1px solid #86ff00;
+    }
+  }
+}
+
+
+
+
+
+
+

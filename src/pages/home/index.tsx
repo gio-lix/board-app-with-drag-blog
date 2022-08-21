@@ -15,6 +15,7 @@ const Home = () => {
         }
     }
 
+
     return (
         <section className={s.root}>
             <div onClick={createBoard} className={s.titleBox}>

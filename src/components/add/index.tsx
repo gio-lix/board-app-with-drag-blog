@@ -4,7 +4,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import boardApi from "../../api/boardApi";
 import {setBoards} from "../../redux/slices/boardSlice";
 import {BoardState} from "../../typeing";
-import DragDrop from "../drop";
+import DragDrop from "../drop/DragDrop";
+import SidebarContent from "../dragDropComponents/sidebarContent";
 
 
 
@@ -41,18 +42,23 @@ const AddPrivate = () => {
             navigate(`/boards/${(boards[0] as BoardState).id}`)
         }
 
-
         setActiveIndex(activeIndex)
         setActiveIndex(boards)
     }, [boards])
 
 
+    const onNavigateLink = (id: string) => {
+        navigate(`/boards/${id}`)
+    }
+
     return (
         <>
             <DragDrop
-                data={activeIndex}
+                onNavigate={onNavigateLink}
+                // data={activeIndex}
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
+                Component={(item: any) => <SidebarContent items={item} />}
             />
         </>
     );

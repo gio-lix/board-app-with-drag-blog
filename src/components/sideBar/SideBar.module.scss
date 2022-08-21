@@ -17,13 +17,13 @@
     overflow-wrap: break-word;
     margin: 1px 0;
 
-    &:hover * {
-      color: $grayLight-200;
-    }
+
+
     > span {
       color: gray;
       display: flex;
       align-items: center;
+
     }
     > p {
       overflow-wrap: break-word;
@@ -47,6 +47,9 @@
     &:hover {
       background-color: $gray;
       opacity: 1;
+      span {
+        color: #dec2c2;
+      }
     }
 
     .add {

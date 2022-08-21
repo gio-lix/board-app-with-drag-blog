@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-direction: column;
+
+  .box {
+    width: 100px;
+    border: 1px solid white;
+    height: 20px;
+    background: #32342e;
+  }
+}

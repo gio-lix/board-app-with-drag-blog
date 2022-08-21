@@ -7,17 +7,16 @@ import authApi from "../../api/apiAuth";
 const Signup = () => {
     const navigate = useNavigate()
     const [userErrorText, setUserErrorText] = useState<string>("")
-    const [user, setUser] = useState(
-        {
+    const [isFocused, setIsFocused] = useState({focus: ""})
+    const [user, setUser] = useState({
             username: "",
             password: "",
             confirmPassword: "",
             email: ""
         })
-    const [isFocused, setIsFocused] = useState({focus: ""})
 
-    const onHandleChange = (e: SyntheticEvent<HTMLInputElement>) => {
-        const {name, value}:any = e.target
+    const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target
         setUser({...user,[name]: value})
     }
 

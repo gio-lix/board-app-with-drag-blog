@@ -6,7 +6,7 @@ const authUtils = {
         if (!token) return false
 
         try {
-            const {data}: any = await authApi.verifyToken()
+            const {data} = await authApi.verifyToken()
             return data
         } catch (err) {
             return  false

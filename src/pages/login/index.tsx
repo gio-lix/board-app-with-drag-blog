@@ -10,8 +10,8 @@ const Login = () => {
     const [user, setUser] = useState({email: "", password: ""})
     const [isFocused, setIsFocused] = useState({focus: ""})
 
-    const onHandleChange = (e: SyntheticEvent<HTMLInputElement>) => {
-        const {name, value}:any = e.target
+    const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target
         setUser({...user,[name]: value})
     }
 
