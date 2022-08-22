@@ -36,7 +36,6 @@ const Board = () => {
                         setBoard(data)
                         setIcon(data?.icon)
                         setSection(data.sections)
-                        console.log("fetch")
                     }
                 }
             } catch (err) {
@@ -76,7 +75,6 @@ const Board = () => {
         const index = _temp.findIndex((e: BoardState) => e.id === boardId)
         _temp[index] = {..._temp[index], title: newTitle}
         dispatch(setBoards(_temp))
-
         if (favorites) {
             const _tempFavorites: BoardState[] = [...favorites]
             const favoritesIndex = _tempFavorites.findIndex((e: BoardState) => e.id === boardId)

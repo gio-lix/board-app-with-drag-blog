@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^35.0.1",
+    "@ckeditor/ckeditor5-react": "^5.0.2",
     "@emoji-mart/data": "^1.0.5",
     "@emoji-mart/react": "^1.0.1",
     "@fontsource/roboto": "^4.5.8",

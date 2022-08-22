@@ -55,7 +55,6 @@ const AddPrivate = () => {
         <>
             <DragDrop
                 onNavigate={onNavigateLink}
-                // data={activeIndex}
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
                 Component={(item: any) => <SidebarContent items={item} />}
