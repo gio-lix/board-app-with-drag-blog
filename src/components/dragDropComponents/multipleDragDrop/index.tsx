@@ -2,22 +2,15 @@ import React, {FC, useRef, useState} from 'react';
 import s from "./MultipleDragDrop.module.scss"
 import taskApi from "../../../api/taskApi";
 import {AiFillDelete} from "react-icons/ai"
-import {TasksState} from "../../../typeing";
+import {SectionsSate, TasksState} from "../../../typeing";
 import TaskModel from "../../taskModel";
 
 
-interface PropsState {
-    _id: string
-    board: string
-    tasks: TasksState[]
-    title: string
-    id: string
-}
 
 interface Props {
-    activeIndex: any
+    activeIndex: SectionsSate[]
     setActiveIndex: Function
-    boardId: any
+    boardId: string
     setCount: Function
 }
 
@@ -90,10 +83,10 @@ const MultipleDragDrop: FC<Props> = ({activeIndex, boardId, setActiveIndex, setC
 
     return (
         <>
-            {activeIndex?.map((board: PropsState, index: number) => {
+            {activeIndex?.map((section: SectionsSate, index: number) => {
                 return (
                     <section key={index} className={s.root}>
-                        {board.tasks.map((task: TasksState, idx: number) => {
+                        {section.tasks.map((task: TasksState, idx: number) => {
                             return (
                                 <div className={s.mainBox} key={idx}>
                                     <div
@@ -110,7 +103,7 @@ const MultipleDragDrop: FC<Props> = ({activeIndex, boardId, setActiveIndex, setC
                                         onDragEnd={handleSort}
                                         onDragOver={(e: React.DragEvent<HTMLDivElement>) => {
                                             e.preventDefault()
-                                            dragOverItemRef.current = {sectionId: board.tasks[idx]?.section?.id}
+                                            dragOverItemRef.current = {sectionId: section.tasks[idx]?.section?.id}
                                         }}
                                         className={s.content}
                                         onClick={() => setSelectTask(task)}
@@ -121,7 +114,7 @@ const MultipleDragDrop: FC<Props> = ({activeIndex, boardId, setActiveIndex, setC
                                                 value={task.title || ""}
                                                 type="text"
                                                 placeholder="Untitled"
-                                                onChange={(e) => console.log("hey")}
+                                                onChange={() => console.log("hey")}
                                             />
                                         </p>
                                     </div>

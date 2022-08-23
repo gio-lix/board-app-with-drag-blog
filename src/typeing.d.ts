@@ -21,6 +21,17 @@ export interface TasksState {
     createdAt: Date
 }
 
+
+export interface SectionsSate {
+    _id: string
+    id: string
+    board: string
+    title: string
+    tasks: TasksState[]
+    createdAt: Date
+    updatedAt: Date
+}
+
 export interface BoardState {
     _id: string
     id: string
@@ -31,6 +42,9 @@ export interface BoardState {
     title: string
     position: number
     user: string
-    sections: []
+    sections: SectionsSate[]
+    createdAt: Date
+    updatedAt: Date
 }
+
 

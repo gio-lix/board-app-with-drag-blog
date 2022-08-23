@@ -1,7 +1,7 @@
 import React, {lazy, Suspense, useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import boardApi from "../../api/boardApi";
-import {BoardState} from "../../typeing";
+import {BoardState, SectionsSate} from "../../typeing";
 import s from "./Board.module.scss"
 import {RootState, useAppDispatch, useAppSelector} from "../../redux/store";
 import {setBoards} from "../../redux/slices/boardSlice";
@@ -17,7 +17,7 @@ const Board = () => {
     const {value} = useAppSelector((state: RootState) => state.board)
     const {value: favorites} = useAppSelector((state: RootState) => state.favorites)
     const [board, setBoard] = useState<BoardState>()
-    const [section, setSection] = useState<BoardState[]>([])
+    const [section, setSection] = useState<SectionsSate[]>([])
     const [icon, setIcon] = useState<string>("")
     const [count, setCount] = useState<number>(0)
     const {boardId} = useParams()
@@ -205,7 +205,7 @@ const Board = () => {
             <Sections
                 sectionData={section}
                 setSectionData={setSection}
-                boardId={boardId}
+                boardId={boardId!}
                 setCount={setCount}
             />
         </section>

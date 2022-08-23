@@ -4,8 +4,10 @@ import {RootState, useAppDispatch, useAppSelector} from "../../redux/store";
 import boardApi from "../../api/boardApi";
 import DragDrop from "../drop/DragDrop";
 import SidebarContent from "../dragDropComponents/sidebarContent";
+import {useNavigate} from "react-router-dom";
 
 const Favorites = () => {
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const [activeIndex, setActiveIndex] = useState<any>()
     const {value: favorites} = useAppSelector((state: RootState) => state.favorites)
@@ -50,12 +52,15 @@ const Favorites = () => {
         return () => {mounted = false}
     },[dispatch])
 
-
+    const onNavigateLink = (id: string) => {
+        navigate(`/boards/${id}`)
+    }
 
     return (
         <DragDrop
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            onNavigate={onNavigateLink}
             Component={(item: any) => <SidebarContent items={item} />}
         />
     );

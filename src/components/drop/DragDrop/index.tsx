@@ -1,10 +1,10 @@
 import React, {useRef} from 'react';
 import clsx from "clsx";
-import {BoardState} from "../../../typeing";
+import {SectionsSate} from "../../../typeing";
 
 
 interface Props {
-    activeIndex: BoardState[]
+    activeIndex: SectionsSate[]
     setActiveIndex: Function
     className?: string
     Component?: any
@@ -32,10 +32,9 @@ const DragDrop = ({ setActiveIndex, activeIndex, onNavigate,className, Component
             onNavigate(id)
         }
     }
-
     return (
         <>
-            {activeIndex?.map((item: BoardState, index: number) => (
+            {activeIndex?.map((item: SectionsSate, index: number) => (
                 <div
                     className={clsx(className ? className : "")}
                     onClick={() => onHandleClick(item.id)}
@@ -53,4 +52,4 @@ const DragDrop = ({ setActiveIndex, activeIndex, onNavigate,className, Component
     )
 };
 
-export default DragDrop;
+export default  DragDrop;

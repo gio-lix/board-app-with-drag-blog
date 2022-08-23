@@ -2,19 +2,19 @@ import React, {FC, useEffect, useState} from 'react';
 import s from './Sections.module.scss'
 import DragDrop from "../drop/DragDrop";
 import SectionContent from "../dragDropComponents/SectionContent";
-import {BoardState} from "../../typeing";
+import {SectionsSate} from "../../typeing";
 import MultipleDragDrop from "../dragDropComponents/multipleDragDrop";
 
 
 interface Props {
-    boardId: any
-    sectionData: BoardState[]
+    boardId: string
+    sectionData: SectionsSate[]
     setSectionData: Function
     setCount: Function
 }
 
 const Sections: FC<Props> = ({boardId, sectionData, setSectionData, setCount}) => {
-    const [activeIndex, setActiveIndex] = useState<any>()
+    const [activeIndex, setActiveIndex] = useState<SectionsSate[]>()
 
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const Sections: FC<Props> = ({boardId, sectionData, setSectionData, setCount}) =
         <section className={s.root}>
             <div className={s.dropTitleBox}>
                 <DragDrop
-                    activeIndex={activeIndex}
+                    activeIndex={activeIndex!}
                     setActiveIndex={setActiveIndex}
                     Component={(items: any) =>
                         <SectionContent
@@ -44,7 +44,7 @@ const Sections: FC<Props> = ({boardId, sectionData, setSectionData, setCount}) =
             <div className={s.box}>
                 <MultipleDragDrop
                     boardId={boardId}
-                    activeIndex={activeIndex}
+                    activeIndex={activeIndex!}
                     setActiveIndex={setActiveIndex}
                     setCount={setCount}
                 />

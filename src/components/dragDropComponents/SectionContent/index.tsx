@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useState} from 'react';
 import s from "./SectionContent.module.scss"
 import {AiOutlinePlus, AiFillDelete} from "react-icons/ai"
 import sectionApi from "../../../api/section";
@@ -16,11 +16,11 @@ interface Props {
 }
 
 const SectionContent = ({items, boardId, data, setSectionData, setCount}: Props) => {
-    const [countFetch, setFetchCount] = useState(0)
-
+    const [countRerender, setCountRerender] = useState(0)
+    console.log(countRerender)
 
     const updateSection = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFetchCount(prev => prev + 1)
+        setCountRerender(prev => prev + 1)
         const value = e.target.value
         const index = data?.findIndex((el: BoardState) => el._id === items.items._id)
         data[index].title = value
