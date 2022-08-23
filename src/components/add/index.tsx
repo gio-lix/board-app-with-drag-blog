@@ -16,7 +16,6 @@ const AddPrivate = () => {
     const navigate = useNavigate()
     const {boardId} = useParams()
 
-
     useEffect(() => {
         let mounted = true;
         (async function getBoards() {
@@ -36,12 +35,10 @@ const AddPrivate = () => {
 
 
     useEffect(() => {
-        const activeIndex = boards.findIndex((e: BoardState) => e.id === boardId)
-
-        if (boards.length > 0 && boardId === undefined) {
+        if (boards.length > 0 ) {
             navigate(`/boards/${(boards[0] as BoardState).id}`)
         }
-
+        const activeIndex = boards?.findIndex((e: BoardState) => e.id === boardId)
         setActiveIndex(activeIndex)
         setActiveIndex(boards)
     }, [boards])

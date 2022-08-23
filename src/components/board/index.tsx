@@ -136,16 +136,16 @@ const Board = () => {
         try {
             await boardApi.deleteBoard(boardId)
             if (favorites) {
-                const newFavoriteList = favorites.filter((e: BoardState) => e.id !== boardId)
+                const newFavoriteList = favorites?.filter((e: BoardState) => e.id !== boardId)
                 dispatch(setFavoritesLists(newFavoriteList))
             }
-
-            const newList = value.filter((e: BoardState) => e.id !== boardId)
+            const newList = value?.filter((e: BoardState) => e?.id !== boardId)
             if (newList.length === 0) {
                 navigate("/")
             } else {
                 navigate(`/boards/${(newList[0] as BoardState).id}`)
             }
+            console.log("newList - - ", newList)
             dispatch(setBoards(newList))
         } catch (err) {
             console.log(err)
