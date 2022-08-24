@@ -11,7 +11,7 @@ const SidebarContent = ({items}: Props) => {
         <div className={s.root}>
             <div>
                 <span>{items.items.icon}</span>
-                <p>{items.items.title}</p>
+                <p className={s.title}>{items.items.title}</p>
             </div>
         </div>
     );

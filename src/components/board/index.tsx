@@ -183,6 +183,7 @@ const Board = () => {
                     value={board?.title || ""}
                     onChange={onUpdateTitle}
                     className={s.title}
+                    placeholder="Title"
                 />
                 <textarea
                     className={s.desc}
