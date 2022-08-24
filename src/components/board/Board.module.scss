@@ -12,8 +12,13 @@
     right: 30px;
     top: 20px;
     cursor: pointer;
+    opacity: 0.6;
     font-size: $font-md-16;
     color: $redHoverDel;
+
+    &:hover {
+      opacity: 1;
+    }
 
   }
   .box {

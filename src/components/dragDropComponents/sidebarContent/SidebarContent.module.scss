@@ -1,18 +1,68 @@
 @import "src/styles/variables";
 
 .root {
-  //overflow-wrap: break-word;
   display: flex;
   align-items: flex-start;
-  width: 300px;
+  position: relative;
+  //width: 300px;
+  width: 100%;
   height: 30px;
-  padding: 2px 20px;
-  margin: 4px 0;
+  padding: 0 20px;
+  margin: 4px auto;
   cursor: pointer;
   overflow: hidden;
 
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    background: $gray-800;
+
+    &:after {
+      content: "";
+      width: 40px;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      background: linear-gradient(to left , $gray-800, transparent);;
+
+    }
+    &:hover {
+      background-color: $gray-350;
+      &:after {
+        content: "";
+        width: 40px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        background: linear-gradient(to left , $gray-350, transparent);
+
+      }
+    }
+  }
+
+
+
+
   &:hover {
     background-color: $gray-350;
+    div {
+      background-color: $gray-350;
+      &:after {
+        content: "";
+        width: 40px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        background: linear-gradient(to left , $gray-350, transparent);
+      }
+    }
   }
   > p {
     margin-left: 5px;

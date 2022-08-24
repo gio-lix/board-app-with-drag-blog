@@ -2,7 +2,7 @@
 @import "src/styles/variables";
 
 .root {
-  width: 400px;
+  max-width: 300px!important;
   min-height: 100vh;
   padding: 5px 7px;
   background-color: $gray-800;
@@ -21,7 +21,21 @@
     > span {
       display: flex;
       align-items: center;
+      justify-content: center;
+      position: relative;
       color: $gray-300;
+      background: none;
+      width: 40px;
+
+      &:after {
+        content: "";
+        width: 30px;
+        height: 20px;
+        position: absolute;
+        left: -30px;
+        background: linear-gradient(to left , $gray-800, transparent);;
+
+      }
 
     }
     > p {
@@ -31,15 +45,21 @@
 
 
     > h3 {
+      //position: absolute;
       letter-spacing: 1px;
-      line-height: 100%;
-
+      width: 270px;
+      height: 100%;
+      text-wrap: normal;
+      white-space: nowrap;
+      overflow: hidden;
+      line-height: 90%;
     }
     .logout {
       position: relative;
       cursor: pointer;
       &:hover {
         @include hoverText("logout", 27px, 15px, _);
+
       }
     }
 
@@ -48,6 +68,15 @@
       opacity: 1;
       span {
         color: $gray-250;
+        &:after {
+          content: "";
+          width: 30px;
+          height: 20px;
+          position: absolute;
+          left: -30px;
+          background: linear-gradient(to left ,$gray-400, transparent)!important;
+
+        }
       }
     }
 

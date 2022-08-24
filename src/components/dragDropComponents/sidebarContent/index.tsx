@@ -9,8 +9,10 @@ const SidebarContent = ({items}: Props) => {
 
     return (
         <div className={s.root}>
-            <span>{items.items.icon}</span>
-            <p>{items.items.title}</p>
+            <div>
+                <span>{items.items.icon}</span>
+                <p>{items.items.title}</p>
+            </div>
         </div>
     );
 };
