@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.root {
+  width: 450px;
+  min-height: 300px;
+  padding: 5px 10px;
+  background: $gray-900;
+  margin: 100px auto;
+
+  .titleBox {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    margin: 5px 0;
+
+    > h3 {
+      text-align: center;
+      font-size: $font-lg-20;
+    }
+    > p {
+      height: 30px;
+      margin: 10px 0 0;
+      text-align: center;
+      font-size: $font-sm;
+      color: $redHoverDel;
+    }
+  }
+}

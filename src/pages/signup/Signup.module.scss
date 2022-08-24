@@ -1,45 +1,40 @@
 @import "src/styles/variables";
 .root {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
 
-  > form:nth-child(1) {
-    width: 450px;
-    height: 520px;
-    padding: 5px 10px;
-    margin-bottom: 20px;
-    background: $gray-900;
+  //> form:nth-child(1) {
+  //  width: 450px;
+  //  height: 520px;
+  //  padding: 5px 10px;
+  //  margin-bottom: 20px;
+  //  background: $gray-900;
+  //
+  //  .error {
+  //    display: flex;
+  //    align-items: center;
+  //    justify-content: center;
+  //    height: 40px;
+  //    width: 100%;
+  //    letter-spacing: 3px;
+  //  }
+  //
+  //  > h1 {
+  //    text-align: center;
+  //  }
+  //}
 
-    .error {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      width: 100%;
-      letter-spacing: 3px;
-    }
-
-    > h1 {
-      text-align: center;
-    }
-  }
-
-  * label {
+  label {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: none;
 
     > p {
       margin-bottom: 10px;
     }
   }
-  * input {
+  input {
     width: 100%;
     padding: 10px 5px;
     font-size: $font-md-18;
@@ -48,30 +43,36 @@
     background: none;
     border: 1px solid $gray-300;
   }
-  * button {
+  > button {
     width: 100%;
     padding: 10px 0;
-    font-size: $font-lg-20;
-    color: $white;
-    cursor: pointer;
     background: none;
-    &:hover {
-      background: #2f2f2f;
-      border: 1px solid $green-light-500!important;
-    }
-  }
-  > p {
-    padding: 8px 10px;
-    color: $blue-light-500;
-    background: $gray-900;
-    border-radius: 10px;
+    color: $white;
+    font-size: $font-lg-20;
+    cursor: pointer;
+    margin: 20px 0;
+    border: none;
 
     &:hover {
       background: $gray-600;
-      cursor: pointer;
     }
   }
 }
+
+.nav {
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: $blue-light-500;
+  background: $gray-900;
+  text-align: center;
+  margin: 10px 0;
+
+  &:hover {
+    background: $gray-600;
+    cursor: pointer;
+  }
+}
+
 .activeInput {
   border: 1px solid $green-light-500!important;
 }

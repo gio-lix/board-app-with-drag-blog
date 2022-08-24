@@ -3,10 +3,11 @@ import s from "./Signup.module.scss";
 import clsx from "clsx";
 import {useNavigate} from "react-router-dom";
 import authApi from "../../api/apiAuth";
+import ValidationLayout from "../../components/validationLayout";
 
 const Signup = () => {
     const navigate = useNavigate()
-    const [userErrorText, setUserErrorText] = useState<string>("")
+    const [error, setError] = useState<string>("")
     const [isFocused, setIsFocused] = useState({focus: ""})
     const [user, setUser] = useState({
             username: "",
@@ -25,35 +26,31 @@ const Signup = () => {
         if (Object.values(user).includes('')) {
             Object.entries(user).map((el) => {
                 if (el[1].trim() === "") {
-                   return  setUserErrorText("please fill empty value")
+                   return  setError("please fill empty value")
                 }
                 return el
             })
             return
         }
-        if (user.confirmPassword !== user.password) return
+        if (user.confirmPassword !== user.password) {
+            return  setError("password do not match")
+        }
         const {confirmPassword, ...arg} = user
         try {
             const {data} = await authApi.signUp(arg)
             localStorage.setItem('token', data.token)
             navigate("/")
         } catch (err) {
-            console.log("err - ", err)
+            console.log("errerrerrerrerr", err)
+            setError((err as any).response.data.message)
         }
     }
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setUserErrorText("")
-        },1500)
-        return () => clearTimeout(timer)
-    },[userErrorText])
 
-    //
+
+
     return (
-        <section  className={s.root}>
-            <form onSubmit={onHandleSubmit}>
-                <h1>Signup</h1>
-                <p className={s.error}>{userErrorText}</p>
+        <ValidationLayout title="Signup" setError={setError} error={error}>
+            <form onSubmit={onHandleSubmit} className={s.root}>
                 <label htmlFor="username">
                     <p>username</p>
                     <input
@@ -112,8 +109,10 @@ const Signup = () => {
                 </label>
                 <button type="submit">submit</button>
             </form>
-            <p onClick={() => navigate("/login")}>Dont have an account? <span>Login</span></p>
-        </section>
+            <p className={s.nav} onClick={() => navigate("/login")}>Dont have an account? <span>Login</span></p>
+        </ValidationLayout>
+
+
     );
 };
 
