@@ -21,9 +21,11 @@ const TaskModel: FC<Props> = ({task, boardId, onClose, onUpdateTask}) => {
     const [fullScreen, setFullScreen] = useState(false)
     const [title, setTitle] = useState("")
     const [content, setContent] = useState<any>()
+    const focusRef = useRef<HTMLTextAreaElement | null>(null)
 
 
     useEffect(() => {
+        focusRef.current?.focus()
         if (task) {
             setContent(task.content)
             setTitle(task.title)
@@ -42,11 +44,12 @@ const TaskModel: FC<Props> = ({task, boardId, onClose, onUpdateTask}) => {
             }
         })()
     },[title])
+
     const updateContent = async (event: any, editor: any) => {
         const data = editor.getData()
         setContent(data)
-
     }
+
     useEffect(() => {
         (async () => {
             try {
@@ -58,6 +61,8 @@ const TaskModel: FC<Props> = ({task, boardId, onClose, onUpdateTask}) => {
             }
         })()
     },[content])
+
+
 
 
     return (
@@ -73,6 +78,8 @@ const TaskModel: FC<Props> = ({task, boardId, onClose, onUpdateTask}) => {
             <div className={s.decreaseBox} ref={closeRef}>
                 <div className={s.box}>
                     <textarea
+                        ref={focusRef}
+                        placeholder="title"
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                     />

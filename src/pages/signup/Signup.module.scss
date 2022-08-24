@@ -1,3 +1,4 @@
+@import "src/styles/variables";
 .root {
   display: flex;
   flex-direction: column;
@@ -8,9 +9,9 @@
   > form:nth-child(1) {
     width: 450px;
     height: 520px;
-    background: #121217;
     padding: 5px 10px;
     margin-bottom: 20px;
+    background: $gray-900;
 
     .error {
       display: flex;
@@ -41,35 +42,36 @@
   * input {
     width: 100%;
     padding: 10px 5px;
-    font-size: 18px;
+    font-size: $font-md-18;
+    color: $white;
     outline: none;
     background: none;
-    border: 1px solid gray;
-    color: white;
+    border: 1px solid $gray-300;
   }
   * button {
     width: 100%;
     padding: 10px 0;
-    background: none;
-    color: white;
-    font-size: 20px;
+    font-size: $font-lg-20;
+    color: $white;
     cursor: pointer;
+    background: none;
     &:hover {
       background: #2f2f2f;
-      border: 1px solid greenyellow!important;
+      border: 1px solid $green-light-500!important;
     }
   }
   > p {
-    color: #00B7FF;
     padding: 8px 10px;
-    background: #121217;
+    color: $blue-light-500;
+    background: $gray-900;
     border-radius: 10px;
+
     &:hover {
-      background: #2f2f2f;
+      background: $gray-600;
       cursor: pointer;
     }
   }
 }
 .activeInput {
-  border: 1px solid greenyellow!important;
+  border: 1px solid $green-light-500!important;
 }

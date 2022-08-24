@@ -9,7 +9,7 @@ import AppLayout from "./layout/AppLayout";
 
 function App() {
     return (
-        <>
+        <article className="main">
           <BrowserRouter>
               <Routes>
                   <Route path="/" element={<AuthLayout/>}>
@@ -22,7 +22,7 @@ function App() {
                   </Route>
               </Routes>
           </BrowserRouter>
-        </>
+        </article>
     );
 }
 

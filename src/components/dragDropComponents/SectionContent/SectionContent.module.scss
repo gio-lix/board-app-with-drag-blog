@@ -1,15 +1,16 @@
+@import "src/styles/variables";
+
 .root {
   margin: 0 5px;
+
   .mainBox {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //width: 100%;
     width: 250px;
-    color: white;
     margin: 1px 0;
     padding: 4px 3px;
-
+    color: $white;
 
 
     > input {
@@ -17,7 +18,7 @@
       border: none;
       outline: none;
       color: white;
-      font-size: 16px;
+      font-size: $font-md-16;
     }
 
     div {
@@ -36,7 +37,7 @@
         cursor: pointer;
 
         &:hover {
-          color: #ff6200;
+          color: $redHoverDel;
         }
       }
     }
@@ -47,7 +48,7 @@
   position: relative;
   width: 100%;
   height: 100px;
-  background: #888f3a;
+  background: $green-mix-400;
 
 }
 

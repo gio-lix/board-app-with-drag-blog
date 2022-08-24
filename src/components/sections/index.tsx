@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import s from './Sections.module.scss'
 import DragDrop from "../drop/DragDrop";
 import SectionContent from "../dragDropComponents/SectionContent";
@@ -23,8 +23,10 @@ const Sections: FC<Props> = ({boardId, sectionData, setSectionData, setCount}) =
 
 
 
+
     return (
-        <section className={s.root}>
+        <section
+            className={s.root} >
             <div className={s.dropTitleBox}>
                 <DragDrop
                     activeIndex={activeIndex!}
@@ -41,7 +43,7 @@ const Sections: FC<Props> = ({boardId, sectionData, setSectionData, setCount}) =
                     }
                 />
             </div>
-            <div className={s.box}>
+            <div  className={s.box}>
                 <MultipleDragDrop
                     boardId={boardId}
                     activeIndex={activeIndex!}

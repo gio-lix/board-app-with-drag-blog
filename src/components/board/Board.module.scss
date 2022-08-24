@@ -2,6 +2,7 @@
 @import "src/styles/mixin";
 
 .root {
+
   padding: 10px 20px;
   width: 100%;
   position: relative;
@@ -10,9 +11,9 @@
     position: absolute;
     right: 30px;
     top: 20px;
-    font-size: 16px;
-    color: #e01a65;
     cursor: pointer;
+    font-size: $font-md-16;
+    color: $redHoverDel;
 
   }
   .box {
@@ -28,23 +29,24 @@
       }
     }
     > h4 {
-      font-size: 20px;
+      font-size: $font-lg-30;
       margin-bottom: 30px;
     }
     .title {
       display: block;
+      margin: 10px 0;
+      letter-spacing: 1px;
+      font-size: $font-lg-26;
+      color: $white;
       background: none;
-      color: white;
       outline: none;
       border: none;
-      letter-spacing: 1px;
-      font-size: 26px;
-      margin: 10px 0;
+
     }
   }
 
   .star {
-    font-size: 32px;
+    font-size: $font-lg-32;
     cursor: pointer;
     position: relative;
 
@@ -61,7 +63,7 @@
     width: 100%;
     height: 100px;
     background: none;
-    color: white;
+    color: $white;
     outline: none;
     border: none;
     overflow: hidden;
@@ -86,7 +88,7 @@
     padding: 8px 18px;
     cursor: pointer;
     opacity: 0.7;
-    color: #c1cbfd;
+    color: $white;
     font-size: 16px;
 
     &:hover {

@@ -1,13 +1,16 @@
+@import "src/styles/variables";
+
 .root {
   position: relative;
   cursor: pointer;
+
   .icon {
-    font-size: 30px;
+    font-size: $font-lg-30;
   }
 
   .active {
     position: absolute;
-    z-index: 20;
     top: 42px;
+    z-index: 20;
   }
 }

@@ -52,9 +52,9 @@ const SideBar = () => {
             <Favorites />
 
             {/* private */}
-            <div className={s.head} onClick={addBoard}>
+            <div className={s.head}>
                 <h3>Private</h3>
-                <span className={s.add}>
+                <span  onClick={addBoard} className={s.add}>
                      <FaPlusSquare/>
                  </span>
             </div>
