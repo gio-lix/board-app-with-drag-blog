@@ -17,7 +17,6 @@ interface Props {
 
 const SectionContent = ({items, boardId, data, setSectionData, setCount}: Props) => {
     const [countRerender, setCountRerender] = useState(0)
-    console.log(countRerender)
 
     const updateSection = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setCountRerender(prev => prev + 1)

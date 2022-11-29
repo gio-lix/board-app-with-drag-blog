@@ -1,5 +1,16 @@
 import React from "react";
 
+
+interface ILogin {
+    email: string
+    password: string
+}
+interface IRegister extends ILogin {
+    username: string
+    confirmPassword: string
+}
+
+
 export interface SectionState {
     _id: string
     board: string

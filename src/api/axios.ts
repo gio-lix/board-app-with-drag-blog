@@ -2,7 +2,7 @@ import queryString from "query-string";
 import axios from "axios";
 
 
-const baseUrl = "http://localhost:5000/api"
+const baseUrl =  "https://drag-drop-app-server.onrender.com/api"
 
 
 const axiosClient =  axios.create({

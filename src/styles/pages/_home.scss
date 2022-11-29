@@ -1,0 +1,23 @@
+@import "src/styles/variables";
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .titleBox {
+    border: 1px solid $green-mix-500;
+    padding: 10px;
+    cursor: pointer;
+    color: $green-mix-500;
+
+    > p {
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      color: $green-mix-300;
+    }
+  }
+}

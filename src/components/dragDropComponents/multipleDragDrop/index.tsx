@@ -70,10 +70,9 @@ const MultipleDragDrop: FC<Props> = ({activeIndex, boardId, setActiveIndex, setC
         let taskItemId = _tasks[boardIndex].tasks[itemIndex]._id
 
         _tasks[boardIndex].tasks.splice(itemIndex, 1)
-
+        setActiveIndex(_tasks)
         try {
             await taskApi.deleteTask(boardItemId, taskItemId)
-            setActiveIndex(_tasks)
         } catch (err) {
             console.log('err - ', err)
         }

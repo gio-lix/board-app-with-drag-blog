@@ -145,7 +145,6 @@ const Board = () => {
             } else {
                 navigate(`/boards/${(newList[0] as BoardState).id}`)
             }
-            console.log("newList - - ", newList)
             dispatch(setBoards(newList))
         } catch (err) {
             console.log(err)

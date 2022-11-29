@@ -1,9 +1,8 @@
 import React from 'react';
-import s from "./Home.module.scss"
-import boardApi from "../../api/boardApi";
+import boardApi from "../api/boardApi";
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch} from "../../redux/store";
-import {setBoards} from "../../redux/slices/boardSlice";
+import {useAppDispatch} from "../redux/store";
+import {setBoards} from "../redux/slices/boardSlice";
 
 const Home = () => {
     const navigate = useNavigate()
@@ -21,8 +20,8 @@ const Home = () => {
 
 
     return (
-        <section className={s.root}>
-            <div onClick={createBoard} className={s.titleBox}>
+        <section className="home">
+            <div onClick={createBoard} className="titleBox">
                 <p>Click here to create first board</p>
             </div>
         </section>

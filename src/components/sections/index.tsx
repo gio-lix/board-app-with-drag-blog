@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import s from './Sections.module.scss'
 import DragDrop from "../drop/DragDrop";
 import SectionContent from "../dragDropComponents/SectionContent";

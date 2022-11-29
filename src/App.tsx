@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Login from "./pages/login";
-import Home from "./pages/home";
 import AuthLayout from "./layout/AuthLayout";
-import Signup from "./pages/signup";
 import Board from "./components/board";
 import AppLayout from "./layout/AppLayout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
 
 function App() {
     return (
