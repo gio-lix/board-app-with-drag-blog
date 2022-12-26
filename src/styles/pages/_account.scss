@@ -1,0 +1,14 @@
+@import "src/styles/variables";
+
+.sign-nav {
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: $blue-light-500;
+  background: $gray-900;
+  text-align: center;
+
+  &:hover {
+    background: $gray-600;
+    cursor: pointer;
+  }
+}

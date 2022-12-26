@@ -1,15 +1,13 @@
-import React, {SyntheticEvent, useEffect, useState} from 'react';
-import s from "./signup/Signup.module.scss";
-import clsx from "clsx";
+import React, {SyntheticEvent,  useState} from 'react';
+
 import {useNavigate} from "react-router-dom";
-import authApi from "../api/apiAuth";
 import ValidationLayout from "../components/validationLayout";
+import authApi from "../api/apiAuth";
 import {IRegister} from "../typeing";
 
 const Signup = () => {
     const navigate = useNavigate()
     const [error, setError] = useState<string>("")
-    const [isFocused, setIsFocused] = useState({focus: ""})
     const [user, setUser] = useState<IRegister>({
             username: "",
             password: "",
@@ -50,7 +48,7 @@ const Signup = () => {
 
     return (
         <ValidationLayout title="Signup" setError={setError} error={error}>
-            <form onSubmit={onHandleSubmit} className="sign-up">
+            <form onSubmit={onHandleSubmit}  >
                 <label htmlFor="username">
                     <p>username</p>
                     <input
@@ -61,8 +59,6 @@ const Signup = () => {
                         id="username"
                         value={user.username }
                         onChange={onHandleChange}
-                        onFocus={() => setIsFocused({focus:"username"})}
-                        className={clsx(isFocused?.focus === "username" ? "active-input" : "")}
                     />
                 </label>
                 <label htmlFor="password">
@@ -75,8 +71,6 @@ const Signup = () => {
                         name="password"
                         value={user.password }
                         onChange={onHandleChange}
-                        onFocus={() => setIsFocused({focus:"password"})}
-                        className={clsx(isFocused?.focus === "password" ? "active-input" : "")}
                     />
                 </label>
                 <label htmlFor="confirmPassword">
@@ -89,8 +83,6 @@ const Signup = () => {
                         name="confirmPassword"
                         value={user.confirmPassword }
                         onChange={onHandleChange}
-                        onFocus={() => setIsFocused({focus:"confirmPassword"})}
-                        className={clsx(isFocused?.focus === "confirmPassword" ? "active-input" : "")}
                     />
                 </label>
                 <label htmlFor="email">
@@ -103,8 +95,6 @@ const Signup = () => {
                         name="email"
                         value={user.email }
                         onChange={onHandleChange}
-                        onFocus={() => setIsFocused({focus:"email"})}
-                        className={clsx(isFocused?.focus === "email" ? "active-input" : "")}
                     />
                 </label>
                 <button type="submit">submit</button>
